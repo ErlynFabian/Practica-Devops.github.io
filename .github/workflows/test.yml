@@ -1,5 +1,4 @@
-name: Pruebas Unitarias
-
+name: Node.js CI
 on:
   push:
     branches: [main]
@@ -10,12 +9,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Configurar Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Instalar dependencias
-        run: npm install
-      - name: Ejecutar pruebas
-        run: npm test
+          node-version: '20'
+      - run: npm ci
+      - run: npm test
